@@ -4,10 +4,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 @Component({
   selector: 'app-image-tunning-page',
   standalone: true,
-  imports: [
-    CommonModule,
-  ],
+  imports: [CommonModule],
   templateUrl: './image-tunning-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ImageTunningPageComponent { }
+export default class ImageTunningPageComponent {}
