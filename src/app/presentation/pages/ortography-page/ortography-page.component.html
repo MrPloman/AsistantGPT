@@ -12,4 +12,8 @@
   <app-text-message-file-box
     (onMessageAndFile)="handlePromptAndFile($event)"
   ></app-text-message-file-box>
+  <app-text-message-select-box
+    [options]="[{ id: '1', value: 'adas' }]"
+    (onMessage)="handleSelect($event)"
+  ></app-text-message-select-box>
 </div>
