@@ -6,5 +6,7 @@
       <app-typing-loader></app-typing-loader>
     </div>
   </div>
-  <app-text-message-box></app-text-message-box>
+  <app-text-message-box
+    (onMessage)="handlePrompt($event)"
+  ></app-text-message-box>
 </div>

@@ -18,4 +18,8 @@ import { TextMessageBoxComponent } from '@components/text-message-box/text-messa
   templateUrl: './ortography-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class OrtographyPageComponent {}
+export default class OrtographyPageComponent {
+  public handlePrompt(prompt: string) {
+    console.log(prompt);
+  }
+}
