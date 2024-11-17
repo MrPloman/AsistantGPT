@@ -1,11 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { ChatMessageComponent } from '@components/chat-bubbles/chat-message/chat-message.component';
 import { MyMessageComponent } from '@components/chat-bubbles/my-message/my-message.component';
 import { TypingLoaderComponent } from '@components/typing-loader/typing-loader.component';
 import { TextMessageBoxComponent } from '@components/text-message-box/text-message-box.component';
 import { TextMessageFileBoxComponent } from '@components/text-message-file-box/text-message-file-box.component';
 import { TextMessageSelectBoxComponent } from '@components/text-message-select-box/text-message-select-box.component';
+import { Message } from 'app/interfaces/message.interface';
+import { MessagesMock } from 'app/mocks/messages.mock';
 
 @Component({
   selector: 'app-ortography-page',
@@ -24,6 +26,10 @@ import { TextMessageSelectBoxComponent } from '@components/text-message-select-b
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class OrtographyPageComponent {
+  public messages = signal<Message[]>(MessagesMock);
+
+  public isLoading = signal<boolean>(false);
+
   public handlePrompt(prompt: string) {
     console.log(prompt);
   }
