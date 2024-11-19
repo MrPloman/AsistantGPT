@@ -25,7 +25,7 @@ export const ortographyUseCase = async (prompt: string) => {
       success: false,
       userScore: 0,
       errors: [],
-      message: 'No connection...',
+      message_checked: 'No connection...',
     };
   }
 };
