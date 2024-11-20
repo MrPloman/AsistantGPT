@@ -1,10 +1,19 @@
 <div class="chat-container">
   <div class="chat-messages">
     <div class="grid gap-y-2">
-      @for (message of messages(); track $index) { @if (message.isGpt) {
+      @for (message of messages(); track $index) { @if (message.isGpt) { @if
+      (message.userScore && message.errors && message.message_checked &&
+      message.review) {
+      <app-chat-bubble-ortography
+        [userScore]="message.userScore"
+        [message_checked]="message.message_checked"
+        [review]="message.review"
+        [errors]="message.errors"
+      ></app-chat-bubble-ortography>
+      } @else {
       <app-chat-message [text]="message.text"></app-chat-message>
 
-      } @else {
+      } } @else {
       <app-my-message [text]="message.text"></app-my-message>
       } } @if (isLoading()) {
       <app-typing-loader></app-typing-loader>
@@ -15,11 +24,4 @@
   <app-text-message-box
     (onMessage)="handlePrompt($event)"
   ></app-text-message-box>
-  <app-text-message-file-box
-    (onMessageAndFile)="handlePromptAndFile($event)"
-  ></app-text-message-file-box>
-  <app-text-message-select-box
-    [options]="[{ id: '1', value: 'adas' }]"
-    (onMessage)="handleSelect($event)"
-  ></app-text-message-select-box>
 </div>

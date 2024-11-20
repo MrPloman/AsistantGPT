@@ -14,6 +14,9 @@ import { TextMessageSelectBoxComponent } from '@components/text-message-select-b
 import { Message } from 'app/interfaces/message.interface';
 import { MessagesMock } from 'app/mocks/messages.mock';
 import { OpenAIService } from '../../services/openAI.service';
+import { OrtographyResponseInterface } from 'app/interfaces';
+import { ChatBubbleOrtographyComponent } from '../../components/chat-bubbles/chat-bubble-ortography/chat-bubble-ortography.component';
+import { OrtographyMessage } from '../../../interfaces/ortography.message.interface';
 
 @Component({
   selector: 'app-ortography-page',
@@ -21,18 +24,17 @@ import { OpenAIService } from '../../services/openAI.service';
   imports: [
     CommonModule,
     ChatMessageComponent,
+    ChatBubbleOrtographyComponent,
     MyMessageComponent,
     TypingLoaderComponent,
     TextMessageBoxComponent,
-    TextMessageFileBoxComponent,
-    TextMessageSelectBoxComponent,
-    TextMessageSelectBoxComponent,
+    ChatBubbleOrtographyComponent,
   ],
   templateUrl: './ortography-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class OrtographyPageComponent {
-  public messages = signal<Message[]>(MessagesMock);
+  public messages = signal<OrtographyMessage[]>(MessagesMock);
 
   public isLoading = signal<boolean>(false);
 
@@ -40,11 +42,29 @@ export default class OrtographyPageComponent {
 
   public handlePrompt(prompt: string) {
     console.log(prompt);
-  }
-  public handlePromptAndFile(data: { prompt: string; file: File }) {
-    console.log(data);
-  }
-  public handleSelect(data: { prompt: string; option: string }) {
-    console.log(data);
+    this.messages.update((oldMessages) => [
+      ...oldMessages,
+      {
+        isGpt: false,
+        text: prompt,
+      },
+    ]);
+
+    this.isLoading.set(true);
+    this.openAIService
+      .checkOrtography(prompt)
+      .subscribe((newMessage: OrtographyResponseInterface) => {
+        console.log(newMessage);
+        if (!newMessage) return;
+        this.messages.update((oldMessages) => [
+          ...oldMessages,
+          {
+            isGpt: true,
+            text: '',
+            ...newMessage,
+          },
+        ]);
+        this.isLoading.set(false);
+      });
   }
 }

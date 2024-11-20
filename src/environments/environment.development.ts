@@ -1,5 +1,5 @@
 export const environment = {
-  BACKEND_URL: 'localhost:3000/gpt',
+  BACKEND_URL: 'http://localhost:3000/gpt',
   CASES: {
     ORTOGRAPHY: 'ortography-check',
   },

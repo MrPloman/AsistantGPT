@@ -1,0 +1,22 @@
+<div class="col-start-1 col-end-9 p-3 rounded-lg animate-fade">
+  <div class="flex flex-row items-start">
+    <div
+      class="flex items-center justify-center h-10 w-10 rounded-full bg-green-600 flex-shrink"
+    >
+      G
+    </div>
+    <div
+      class="flex flex-col items-start relative ml-3 text-sm bg-black bg-opacity-25 pt-3 pb-2 px-4 shadow rounded-xl"
+    >
+      <p class="text-2xl underline underline-offset-8">{{ userScore }} / 100</p>
+
+      <p class="text-lg">{{ review }}</p>
+      <p class="text-lg">"{{ message_checked }}"</p>
+      <ul>
+        @for (error of errors; track $index) {
+        <li class="text-lg">{{ error }}</li>
+        }
+      </ul>
+    </div>
+  </div>
+</div>
