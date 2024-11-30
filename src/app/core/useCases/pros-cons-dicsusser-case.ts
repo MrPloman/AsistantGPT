@@ -15,6 +15,13 @@ export const prosConsDiscusserUseCase = async (prompt: string) => {
     );
     if (!response.ok)
       throw new Error('Could not make the pros cons discussion connection...');
+    if (!response)
+      return {
+        success: false,
+        role: '',
+        content: '',
+        refusal: true,
+      };
     const data = (await response.json()) as ProsConsDiscusserResponseInterface;
     return {
       success: true,

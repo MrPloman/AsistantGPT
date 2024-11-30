@@ -15,9 +15,16 @@ export const ortographyUseCase = async (prompt: string) => {
     );
     if (!response.ok)
       throw new Error('Could not make the ortography correction');
+    if (!response)
+      return {
+        success: false,
+        userScore: 0,
+        errors: [],
+        message_checked: 'No connection...',
+        review: '',
+      };
     const data = (await response.json()) as OrtographyResponseInterface;
     return {
-      success: true,
       ...data,
     };
   } catch (error) {

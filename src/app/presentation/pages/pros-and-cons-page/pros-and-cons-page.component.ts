@@ -49,7 +49,7 @@ export default class ProsAndConsPageComponent {
       .prosConsDiscusser(prompt)
       .subscribe((newMessage: ProsConsDiscusserResponseInterface) => {
         console.log(newMessage);
-        if (!newMessage) return;
+        if (!newMessage || newMessage.refusal) return;
         this.messages.update((oldMessages) => [
           ...oldMessages,
           {

@@ -54,8 +54,7 @@ export default class OrtographyPageComponent {
     this.openAIService
       .checkOrtography(prompt)
       .subscribe((newMessage: OrtographyResponseInterface) => {
-        console.log(newMessage);
-        if (!newMessage) return;
+        if (!newMessage || !newMessage.success) return;
         this.messages.update((oldMessages) => [
           ...oldMessages,
           {

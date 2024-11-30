@@ -3,4 +3,5 @@ export interface OrtographyResponseInterface {
   errors: string[];
   message_checked: string;
   review: string;
+  success: boolean;
 }
