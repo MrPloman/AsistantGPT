@@ -3,5 +3,6 @@ export const environment = {
   CASES: {
     ORTOGRAPHY: 'ortography-check',
     PROS_CONS_DISCUSSER: 'pros-cons-discusser',
+    PROS_CONS_STREAM_DISCUSSER: 'pros-cons-discusser-stream',
   },
 };

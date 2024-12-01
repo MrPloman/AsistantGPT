@@ -21,7 +21,7 @@ export class OpenAIService {
   ): Observable<ProsConsDiscusserResponseInterface> {
     return from(prosConsDiscusserUseCase(prompt));
   }
-  public prosConsStreamDiscusser(prompt: string) {
-    return prosConsStreamDiscusserUseCase(prompt);
+  public prosConsStreamDiscusser(prompt: string, abortSignal: AbortSignal) {
+    return prosConsStreamDiscusserUseCase(prompt, abortSignal);
   }
 }
