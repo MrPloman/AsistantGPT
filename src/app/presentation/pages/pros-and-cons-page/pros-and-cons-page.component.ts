@@ -35,7 +35,6 @@ export default class ProsAndConsPageComponent {
 
   public isLoading = signal<boolean>(false);
   public handlePrompt(prompt: string) {
-    console.log(prompt);
     this.messages.update((oldMessages) => [
       ...oldMessages,
       {
@@ -48,7 +47,6 @@ export default class ProsAndConsPageComponent {
     this.openAIService
       .prosConsDiscusser(prompt)
       .subscribe((newMessage: ProsConsDiscusserResponseInterface) => {
-        console.log(newMessage);
         if (!newMessage || newMessage.refusal) return;
         this.messages.update((oldMessages) => [
           ...oldMessages,

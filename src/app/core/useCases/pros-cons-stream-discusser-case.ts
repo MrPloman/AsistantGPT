@@ -1,1 +1,3 @@
-export const prosConsStreamDiscusserUseCase = async (prompt: string) => {};
+export const prosConsStreamDiscusserUseCase = async (prompt: string) => {
+  console.log(prompt);
+};

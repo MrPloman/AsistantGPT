@@ -41,7 +41,6 @@ export default class OrtographyPageComponent {
   private openAIService = inject(OpenAIService);
 
   public handlePrompt(prompt: string) {
-    console.log(prompt);
     this.messages.update((oldMessages) => [
       ...oldMessages,
       {
