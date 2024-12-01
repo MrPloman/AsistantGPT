@@ -13,6 +13,7 @@ import { TypingLoaderComponent } from '@components/typing-loader/typing-loader.c
 import { Message, ProsConsDiscusserResponseInterface } from 'app/interfaces';
 import { OpenAIService } from 'app/presentation/services/openAI.service';
 import { ChatMessageMarkdownComponent } from '../../components/chat-bubbles/chat-message-markdown/chat-message-markdown.component';
+import { MessagesProsAndConsMock } from 'app/mocks/messages-pros-and-cons.mock';
 
 @Component({
   selector: 'app-pros-and-cons-page',
@@ -30,7 +31,7 @@ import { ChatMessageMarkdownComponent } from '../../components/chat-bubbles/chat
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class ProsAndConsPageComponent {
-  public messages = signal<Message[]>([]);
+  public messages = signal<Message[]>(MessagesProsAndConsMock);
   private openAIService = inject(OpenAIService);
 
   public isLoading = signal<boolean>(false);
