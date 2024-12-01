@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ortographyUseCase } from 'app/core/useCases/ortography.use-case';
 import { prosConsDiscusserUseCase } from 'app/core/useCases/pros-cons-dicsusser-case';
+import { prosConsStreamDiscusserUseCase } from 'app/core/useCases/pros-cons-stream-discusser-case';
 import {
   OrtographyResponseInterface,
   ProsConsDiscusserResponseInterface,
@@ -19,5 +20,8 @@ export class OpenAIService {
     prompt: string
   ): Observable<ProsConsDiscusserResponseInterface> {
     return from(prosConsDiscusserUseCase(prompt));
+  }
+  public prosConsStreamDiscusser(prompt: string) {
+    return prosConsStreamDiscusserUseCase(prompt);
   }
 }
