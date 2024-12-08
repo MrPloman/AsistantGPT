@@ -1,7 +1,7 @@
 <form
   [formGroup]="form"
   (ngSubmit)="handleSubmit()"
-  class="flex flex-row items-center h-16 rounded-xl bg-gray-800 w-full px-4"
+  class="flex flex-row justify-between items-center h-16 rounded-xl bg-gray-800 w-full px-4"
 >
   <div class="flex-grow w-full">
     <div class="relative w-full">
@@ -16,10 +16,10 @@
     </div>
   </div>
   <div class="relative w-full">
-    <div class="relative w-full">
+    <div class="relative w-full flex justify-end">
       <select
         name="selectOption"
-        class="w-60 ml-5 rounded-xl border-2 text-gray-200 focus:outline-none bg-slate-800 border-s-gray-200 px-4 py-2"
+        class="w-30 ml-5 rounded-xl border-2 text-gray-200 focus:outline-none bg-slate-800 border-s-gray-200 px-4 py-2"
         formControlName="option"
       >
         <option value="">Selecciona</option>
