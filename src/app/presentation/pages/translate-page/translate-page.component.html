@@ -13,7 +13,7 @@
     </div>
   </div>
   <app-text-message-select-box
-    [options]="[]"
+    [options]="languagesOptions"
     [placeholder]="'Escribe algo que quieras pedir...'"
     (onMessage)="handlePrompt($event.prompt, $event.option)"
   ></app-text-message-select-box>

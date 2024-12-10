@@ -17,7 +17,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TextMessageSelectBoxComponent {
-  @Input({ required: true }) public options: { value: string; id: string }[] =
+  @Input({ required: true }) public options: { value: string; id: number }[] =
     [];
 
   @Input() public placeholder: string = '';

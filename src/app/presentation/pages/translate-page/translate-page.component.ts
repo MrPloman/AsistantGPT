@@ -6,16 +6,14 @@ import {
   signal,
 } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ChatMessageMarkdownComponent } from '@components/chat-bubbles/chat-message-markdown/chat-message-markdown.component';
 import { ChatMessageComponent } from '@components/chat-bubbles/chat-message/chat-message.component';
 import { MyMessageComponent } from '@components/chat-bubbles/my-message/my-message.component';
-import { TextMessageBoxComponent } from '@components/text-message-box/text-message-box.component';
 import { TypingLoaderComponent } from '@components/typing-loader/typing-loader.component';
 import { Message } from 'app/interfaces';
-import { MessagesProsAndConsMock } from 'app/mocks/messages-pros-and-cons.mock';
 import { MessagesTranslate } from 'app/mocks/messages-translate.mock';
 import { OpenAIService } from 'app/presentation/services/openAI.service';
 import { TextMessageSelectBoxComponent } from '../../components/text-message-select-box/text-message-select-box.component';
+import { LanguagesOptions } from 'app/mocks/languages-options.mock';
 
 @Component({
   selector: 'app-translate-page',
@@ -34,6 +32,7 @@ import { TextMessageSelectBoxComponent } from '../../components/text-message-sel
 })
 export default class TranslatePageComponent {
   private openAIService = inject(OpenAIService);
+  public languagesOptions = LanguagesOptions;
 
   public messages = signal<Message[]>(MessagesTranslate);
   public isLoading = signal<boolean>(false);
@@ -62,8 +61,9 @@ export default class TranslatePageComponent {
     this.isLoading.set(true);
 
     // Getting the async stream from service, sending the prompt and the abortsignal value
-    const stream = this.openAIService.prosConsStreamDiscusser(
+    const stream = this.openAIService.translateStream(
       prompt,
+      option,
       this.abort().signal
     );
 
